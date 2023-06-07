@@ -2,6 +2,7 @@
 
 HTML='/tmp/font-downloads.html'
 FONT_DOWNLOADS="https://www.nerdfonts.com/font-downloads"
+FONTSDIR="/home/$USER/.local/share/fonts"
 
 curl -s -raw $FONT_DOWNLOADS -o $HTML
 
@@ -40,8 +41,8 @@ else
 fi
 
 # unzip file into directory
-fontdir="/home/$USER/.local/share/fonts/$font"
-mkdir -p $fontdir && unzip -q /tmp/${font}.zip -d $fontdir
+target_dir="$FONTSDIR/$font"
+mkdir -p $target_dir && unzip -q /tmp/${font}.zip -d $target_dir
 echo "[+] $font has been successfully installed."
 
 # clean up
